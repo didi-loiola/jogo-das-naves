@@ -48,3 +48,63 @@ body {
     text-align: center;
     padding: 10px;
 }
+
+#inimigo1 {
+    width: 256px;
+    height: 66px;
+    position: absolute;
+    left: 689px;
+    top: 253px;
+    background-image: url(/assets/imgs/inimigo1.png);
+}
+
+#inimigo2 {
+    width: 165px;
+    height: 70px;
+    position: absolute;
+    left: 775px;
+    top: 447px;
+    background-image: url(/assets/imgs/inimigo2.png);
+}
+
+#amigo {
+    width: 44px;
+    height: 51px;
+    position: absolute;
+    left: 10px;
+    top: 464px;
+    background-image: url(/assets/imgs/amigo.png);
+}
+
+.anima1 {
+    background-image: url(/assets/imgs/helicoptero.png);
+    animation: play .5s steps(2) infinite;
+}
+
+.anima2 {
+    background-image: url(/assets/imgs/inimigo1.png);
+    animation: play .5s steps(2) infinite;
+}
+
+.anima3 {
+    background-image: url(/assets/imgs/inimigo1.png);
+    animation: play2 .9s steps(12) infinite;
+}
+
+@keyframes play {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -512px;
+    }
+}
+
+@keyframes play2 {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -528px;
+    }
+}

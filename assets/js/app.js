@@ -32,7 +32,9 @@ function start() {
     function loop() {
         moveFundo()
         moveJogador()
-        moveinimigo1();
+        moveInimigo1()
+        moveInimigo2()
+        moveAmigo()
     }
 
     function moveFundo() {
@@ -63,7 +65,7 @@ function start() {
         }
     }
 
-    function moveinimigo1() {
+    function moveInimigo1() {
         posicaoX = parseInt($("#inimigo1").css("left"));
         $("#inimigo1").css("left", posicaoX - velocidade);
         $("#inimigo1").css("top", posicaoY);
@@ -72,6 +74,22 @@ function start() {
             posicaoY = parseInt(Math.random() * 334);
             $("#inimigo1").css("left", 694);
             $("#inimigo1").css("top", posicaoY);
+        }
+    }
+
+    function moveInimigo2() {
+        posicaoX = parseInt($("#inimigo2").css("left"))
+        $("#inimigo2").css("left", posicaoX - 3)
+        if (posicaoX <= 0) {
+            $("#inimigo2").css("left", 775)
+        }
+    }
+
+    function moveAmigo() {
+        posicaoX = parseInt($("#amigo").css("left"))
+        $("#amigo").css("left", posicaoX + 1)
+        if (posicaoX > 906) {
+            $("#amigo").css("left", 0)
         }
     }
 }

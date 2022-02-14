@@ -36,6 +36,7 @@ function start() {
         moveInimigo1()
         moveInimigo2()
         moveAmigo()
+        colisao()
     }
 
     function moveFundo() {
@@ -117,5 +118,11 @@ function start() {
                 }
             }
         }
+    }
+
+    function colisao() {
+        var colisao1 = ($("#jogador").collision($("#inimigo1")));
+
+        console.log(colisao1);
     }
 }

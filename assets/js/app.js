@@ -6,16 +6,16 @@ function start() {
     $("#fundoGame").append("<div id='inimigo2'></div>")
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>")
 
-    var podeAtirar = true
-    var fimdejogo = false;
-    var jogo = {}
-    var TECLA = {
+    let podeAtirar = true
+    let fimdejogo = false;
+    let jogo = {}
+    let TECLA = {
         W: 87,
         S: 83,
         D: 68
     }
-    var velocidade = 5
-    var posicaoY = parseInt(Math.random() * 334)
+    let velocidade = 5
+    let posicaoY = parseInt(Math.random() * 334)
 
     jogo.pressionou = []
 
@@ -46,7 +46,7 @@ function start() {
 
     function moveJogador() {
         if (jogo.pressionou[TECLA.W]) {
-            var topo = parseInt($("#jogador").css("top"))
+            let topo = parseInt($("#jogador").css("top"))
             $("#jogador").css("top", topo - 10)
             if (topo <= 0) {
                 $("#jogador").css("top", topo + 10)
@@ -54,7 +54,7 @@ function start() {
         }
 
         if (jogo.pressionou[TECLA.S]) {
-            var topo = parseInt($("#jogador").css("top"))
+            let topo = parseInt($("#jogador").css("top"))
             $("#jogador").css("top", topo + 10)
             if (topo >= 430) {
                 $("#jogador").css("top", topo - 10)
@@ -121,12 +121,12 @@ function start() {
     }
 
     function colisao() {
-        var colisao1 = ($("#jogador").collision($("#inimigo1")))
-        var colisao2 = ($("#jogador").collision($("#inimigo2")));
-        var colisao3 = ($("#disparo").collision($("#inimigo1")));
-        var colisao4 = ($("#disparo").collision($("#inimigo2")));
-        var colisao5 = ($("#jogador").collision($("#amigo")));
-        var colisao6 = ($("#inimigo2").collision($("#amigo")));
+        let colisao1 = ($("#jogador").collision($("#inimigo1")))
+        let colisao2 = ($("#jogador").collision($("#inimigo2")));
+        let colisao3 = ($("#disparo").collision($("#inimigo1")));
+        let colisao4 = ($("#disparo").collision($("#inimigo2")));
+        let colisao5 = ($("#jogador").collision($("#amigo")));
+        let colisao6 = ($("#inimigo2").collision($("#amigo")));
 
         if (colisao1.length > 0) {
             inimigo1X = parseInt($("#inimigo1").css("left"))
@@ -180,12 +180,12 @@ function start() {
     function explosao1(inimigo1X, inimigo1Y) {
         $("#fundoGame").append("<div id='explosao1'></div")
         $("#explosao1").css("background-image", "url(assets/imgs/explosao.png)")
-        var div = $("#explosao1")
+        let div = $("#explosao1")
         div.css("top", inimigo1Y)
         div.css("left", inimigo1X)
         div.animate({ width: 200, opacity: 0 }, "slow")
 
-        var tempoExplosao = window.setInterval(removeExplosao, 1000)
+        let tempoExplosao = window.setInterval(removeExplosao, 1000)
 
         function removeExplosao() {
             div.remove()
@@ -194,7 +194,7 @@ function start() {
     }
 
     function reposicionaInimigo2() {
-        var tempoColisao4 = window.setInterval(reposiciona4, 5000);
+        let tempoColisao4 = window.setInterval(reposiciona4, 5000);
 
         function reposiciona4() {
             window.clearInterval(tempoColisao4);
@@ -208,12 +208,12 @@ function start() {
     function explosao2(inimigo2X, inimigo2Y) {
         $("#fundoGame").append("<div id='explosao2'></div");
         $("#explosao2").css("background-image", "url(assets/imgs/explosao.png)");
-        var div2 = $("#explosao2");
+        let div2 = $("#explosao2");
         div2.css("top", inimigo2Y);
         div2.css("left", inimigo2X);
         div2.animate({ width: 200, opacity: 0 }, "slow");
 
-        var tempoExplosao2 = window.setInterval(removeExplosao2, 1000);
+        let tempoExplosao2 = window.setInterval(removeExplosao2, 1000);
 
         function removeExplosao2() {
             div2.remove();
@@ -222,7 +222,7 @@ function start() {
     }
 
     function reposicionaAmigo() {
-        var tempoAmigo = window.setInterval(reposiciona6, 6000);
+        let tempoAmigo = window.setInterval(reposiciona6, 6000);
 
         function reposiciona6() {
             window.clearInterval(tempoAmigo);

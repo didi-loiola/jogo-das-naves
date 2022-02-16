@@ -5,7 +5,7 @@ function start() {
     $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>")
     $("#fundoGame").append("<div id='inimigo2'></div>")
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>")
-    $("#fundoGame").append("<div id='placar'></div>");
+    $("#fundoGame").append("<div id='placar'></div>")
     $("#fundoGame").append("<div id='energia'></div>")
 
     let podeAtirar = true
@@ -14,6 +14,12 @@ function start() {
     let salvos = 0
     let perdidos = 0
     let energiaAtual = 3
+    let somDisparo = document.getElementById("somDisparo")
+    let somExplosao = document.getElementById("somExplosao")
+    let musica = document.getElementById("musica")
+    let somGameover = document.getElementById("somGameover")
+    let somPerdido = document.getElementById("somPerdido")
+    let somResgate = document.getElementById("somResgate")
     let jogo = {}
     let TECLA = {
         W: 87,
@@ -22,6 +28,12 @@ function start() {
     }
     let velocidade = 5
     let posicaoY = parseInt(Math.random() * 334)
+
+    musica.addEventListener("ended", function() {
+        musica.currentTime = 0;
+        musica.play();
+    }, false);
+    musica.play();
 
     jogo.pressionou = []
 
@@ -104,6 +116,7 @@ function start() {
 
     function disparo() {
         if (podeAtirar) {
+            somDisparo.play()
             podeAtirar = false
 
             topo = parseInt($("#jogador").css("top"))
@@ -186,6 +199,7 @@ function start() {
 
         if (colisao5.length > 0) {
             salvos++
+            somResgate.play()
             reposicionaAmigo();
             $("#amigo").remove();
         }
@@ -202,6 +216,7 @@ function start() {
     }
 
     function explosao1(inimigo1X, inimigo1Y) {
+        somExplosao.play()
         $("#fundoGame").append("<div id='explosao1'></div")
         $("#explosao1").css("background-image", "url(assets/imgs/explosao.png)")
         let div = $("#explosao1")
@@ -230,6 +245,7 @@ function start() {
     }
 
     function explosao2(inimigo2X, inimigo2Y) {
+        somExplosao.play()
         $("#fundoGame").append("<div id='explosao2'></div");
         $("#explosao2").css("background-image", "url(assets/imgs/explosao.png)");
         let div2 = $("#explosao2");
@@ -246,6 +262,7 @@ function start() {
     }
 
     function explosao3(amigoX, amigoY) {
+        somPerdido.play()
         $("#fundoGame").append("<div id='explosao3' class='anima4'></div");
         $("#explosao3").css("top", amigoY);
         $("#explosao3").css("left", amigoX);
